@@ -1,0 +1,25 @@
+services:
+  jellyfin:
+    image: jellyfin/jellyfin:${JELLYFIN_VERSION}
+    container_name: jellyfin
+    group_add:
+      - "993"
+    network_mode: 'host'
+    volumes:
+      - /config:/config
+      - /cache:/cache
+      - type: bind
+        source: ${FILMS_PATH}
+        target: /films
+        read_only: true
+      - type: bind
+        source: ${TV_SHOWS_PATH}
+        target: /shows
+        read_only: true
+      - type: bind
+        source: ${MUSIC_PATH}
+        target: /music
+        read_only: true
+    restart: 'unless-stopped'
+    devices:
+      - /dev/dri/renderD128:/dev/dri/renderD128
