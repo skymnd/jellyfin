@@ -20,9 +20,4 @@ for how to set that up.
 
 I'm storing the assets on a mounted
 NAS drive rather than on the VM.
-The drives are mounted at boot by editing `/etc/fstab`
-and adding
-```
-<NAS_IP>:/mnt/tank/<NAS_SUBPATH> /mnt/<VM_MOUNT_LOCATION> nfs defaults 0 0
-```
-for each drive I would like to mount.
+The drives are mounted in the docker-compose as docker volumes.
